@@ -1,27 +1,49 @@
 import java.awt.*;
 
-public class Saab95 extends Car {   /** klass som ärver av den abstrakta klassen Car */
+/**
+ *
+ *klass som ärver av den abstrakta klassen Car 
+ */
+public class Saab95 extends Car { 
 
-    private boolean turboOn; /** internt tillstånd som beskriver om turbon på/av */
+    /**
+     * internt tillstånd som beskriver om turbon på/av
+     */
+    private boolean turboOn;
 
-    public Saab95() {       /** Konstruktor som skapar saab med 2 dörrar, röd, 125 hk, turbo av, heter Saab95, stänger av motorn */
+    /**
+     * Konstruktor som skapar saab med 2 dörrar, röd, 125 hk, turbo av, heter Saab95, stänger av motorn
+     */
+    public Saab95() {     
         super(2, Color.red, 125, "Saab95");
         turboOn = false;
     }
 
+    /**
+     * Sätter på turbon
+     */
     public void setTurboOn() {
         this.turboOn = true;
-    }       /** Sätter på turbon */
+    }      
 
+    /**
+     * Stänger av turbon
+     */
     public void setTurboOff() {
         turboOn = false;
-    }           /** Stänger av turbon */
+    }         
 
+    /**
+     * Kollar om turbo på/av
+     */
     public boolean checkTurboOn() {
         return this.turboOn;
-    }   /** Kollar om turbo på/av */
+    }   
 
-    public double speedFactor() {           /** Metod som anger vår speed factor ökar extra om turbo på */
+    /**
+     * Metod som anger vår speed factor ökar extra om turbo på
+     */
+    public double speedFactor() {          
         double turbo = 1;
         if (turboOn) turbo = 1.3;
         return getEnginePower() * 0.01 * turbo;
