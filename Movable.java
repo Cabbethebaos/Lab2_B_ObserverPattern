@@ -3,9 +3,19 @@
  * Interfaces kan man implementera flera av till skillnad från extends.
  * Vi gör en interface Movable som innehåller metoderna move, turnDir. Dessa metoder är statiska
  * */
-public interface Movable {   
-    void move();        /** rörelse  metod som måste implementeras av "subklasser" */ 
+public interface Movable {
+    /**
+     * rörelse  metod som måste implementeras av "subklasser"
+     */
+    void move();
 
-    void turnLeft();    /** sväng vänster metod som måste implementeras av "subklasser" */ 
-    void turnRight();   /** sväng höger metod som måste implementeras av "subklasser" */ 
+    /**
+     * sväng vänster metod som måste implementeras av "subklasser"
+     */
+    void turnLeft();
+
+    /**
+     * sväng höger metod som måste implementeras av "subklasser"
+     */
+    void turnRight();
 }
