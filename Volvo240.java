@@ -13,7 +13,7 @@ import java.awt.*;
     * Skapar volvo med 4 dörrar, färg: svart, 100 hk, namn: Volvo240, stoppar motorn
     */ 
     public Volvo240() {       
-    super(4, Color.black, 100, "Volvo240");
+    super(Color.black, 100, "Volvo240", 4);
     }
 
    /**
