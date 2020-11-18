@@ -15,7 +15,7 @@ public class Saab95 extends Car {
      * Konstruktor som skapar saab med 2 dörrar, röd, 125 hk, turbo av, heter Saab95, stänger av motorn
      */
     public Saab95() {     
-        super(2, Color.red, 125, "Saab95");
+        super(Color.red, 125, "Saab95", 2);
         turboOn = false;
     }
 
