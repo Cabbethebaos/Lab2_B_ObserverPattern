@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.*;
 
-public class Workshop<T> {
+public class Workshop<T extends Car> {
 
     /**
      * Variabel initiering

@@ -34,7 +34,7 @@ public class Scania extends Truck{
      * @param raise
      */
     public void raiseBed(int raise){
-        if(degree + raise <= 70 && this.getCurrentSpeed() == 0)
+        if(degree + raise <= 70 && this.getCurrentSpeed() <= 0.1)
             degree += raise;
         else
             System.out.println("Either can't raise to by such degree or vechile is moving");
