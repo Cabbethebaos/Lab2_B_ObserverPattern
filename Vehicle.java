@@ -215,6 +215,19 @@ public abstract class Vehicle implements Movable {
     }
 
     /**
+     * Vänder bilen om
+     */
+    public void turnAround(){
+        if(dirr < 1 )
+            dirr += 2;
+        else if(dirr == 2)
+            dirr = 0;
+        else if(dirr == 3)
+            dirr = 1;
+
+    }
+
+    /**
      *
      * @param speed värdet som hastigheten ska sättas till
      */

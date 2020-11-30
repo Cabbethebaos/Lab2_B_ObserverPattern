@@ -3,19 +3,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Vector;
 
 /*
-* This class represents the Controller part in the MVC pattern.
-* It's responsibilities is to listen to the View and responds in a appropriate manner by
-* modifying the model state and the updating the view.
+ * This class represents the Controller part in the MVC pattern.
+ * It's responsibilities is to listen to the View and responds in a appropriate manner by
+ * modifying the model state and the updating the view.
  */
 
 /**
- * Se till att även bromsknappen är kopplad till bilen, så att den får effekt på er simulation (bromsvärdet får ni från samma snurra som
- * gasen hämtar sitt värde ifrån). Ni måste se till att modellens tillstånd uppdateras, och sen anropar tillbaka till CarView via CarController.
- *
- * Volvon åker just nu ut ur rutan. Se till att när bilen nuddar en vägg så stoppar den helt, inverterar sin riktning och startar igen.
- *
  * Sätt in Saab95, Scania och deras respektive bilder med 100 pixlars avstånd i Y-led från varandra (alla avbildas ursprungligen med X=0).
  * Koppla turbo-knapparna till Saaben och flakknapparna till Scania. Koppla "starta och stoppa alla bilar"-knapparna till bägge. Även dessa
  * bilar ska förhindras att åka utanför rutan.
@@ -33,7 +29,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
+    ArrayList<Vehicle> cars = new ArrayList<>();
 
     //methods:
 
@@ -43,6 +39,7 @@ public class CarController {
 
         cc.cars.add(new Volvo240());
         cc.cars.add(new Saab95());
+        cc.cars.add(new Scania(Color.red, 278, "Scania"));
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -51,12 +48,17 @@ public class CarController {
         cc.timer.start();
     }
 
+
+
     /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
+     * view to update its images. Change this method to your needs.
+     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Car car : cars) {
+            for (Vehicle car : cars) {
+                if(car.getLocY() > 500 || car.getLocY() < 0 || car.getLocX() < 0 || car.getLocX() > 700)
+                    car.turnAround();
+
                 car.move();
                 int x = (int) Math.round(car.getLocX());
                 int y = (int) Math.round(car.getLocY());
@@ -67,18 +69,32 @@ public class CarController {
         }
     }
 
+    public void start() {
+        for (Vehicle car : cars)
+            car.startEngine();
+    }
+
+    public void stop() {
+        for (Vehicle car : cars)
+            car.stopEngine();
+    }
+
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Car car : cars
-                ) {
+        for (Vehicle car : cars
+        ) {
             car.gas(gas);
         }
     }
 
+    /**
+     * Anropar BRAKE metoden för varje car i cars listan.
+     * @param amount
+     */
     void brake(int amount) {
         double brake = ((double) amount) / 100;
-        for (Car car : cars
+        for (Vehicle car : cars
         ) {
             car.brake(brake);
         }

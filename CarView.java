@@ -40,6 +40,9 @@ public class CarView extends JFrame{
     int brakeAmount = 0;
     JLabel brakeLabel = new JLabel("Amount of gas");
 
+    /**
+     * Dekleration av knapparna som läggs till frame'n
+     */
     JButton gasButton = new JButton("Gas");
     JButton brakeButton = new JButton("Brake");
     JButton turboOnButton = new JButton("Saab Turbo on");
@@ -50,7 +53,11 @@ public class CarView extends JFrame{
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
-    // Constructor
+    /**
+     * Konstruktor som tar ett namn på frame'n och ett argument av typ CarController och initierar den.
+     * @param framename
+     * @param cc
+     */
     public CarView(String framename, CarController cc){
         this.carC = cc;
         initComponents(framename);
@@ -87,7 +94,7 @@ public class CarView extends JFrame{
         this.add(gasPanel);
 
         /**
-         *
+         * Gör dessamma för brake som för gas
          */
         brakeSpinner = new JSpinner(spinnerModel);
         brakeSpinner.addChangeListener(new ChangeListener() {
@@ -131,12 +138,33 @@ public class CarView extends JFrame{
             }
         });
 
-        // This actionListener is for the gas button only
-        // TODO: Create more for each component as necessary
+        /**
+         * ActionListener för BRAKE knappen.
+         */
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 carC.brake(brakeAmount);
+            }
+        });
+
+        /**
+         * ActionListener för START knappen.
+         */
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.start();
+            }
+        });
+
+        /**
+         * ActionListener för STOP knappen.
+         */
+        stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.stop();
             }
         });
 
