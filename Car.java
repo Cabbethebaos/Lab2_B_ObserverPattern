@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public abstract class Car extends Vehicle implements Movable {      // Abstrakt klass som implementerar interfacet movable
+public abstract class Car extends Vehicle  {      // Abstrakt klass som implementerar interfacet movable
 
     private int nrDoors; // Number of doors on the car
 

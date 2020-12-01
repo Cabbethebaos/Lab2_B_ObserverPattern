@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
+import java.util.List;
 
 /*
  * This class represents the Controller part in the MVC pattern.
@@ -29,7 +30,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Vehicle> cars = new ArrayList<>();
+    public List<Vehicle> cars = new ArrayList<>();
 
     //methods:
 
@@ -38,8 +39,8 @@ public class CarController {
         CarController cc = new CarController();
 
         cc.cars.add(new Volvo240());
-        cc.cars.add(new Saab95());
         cc.cars.add(new Scania(Color.red, 278, "Scania"));
+        cc.cars.add(new Saab95());
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -62,7 +63,7 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.getLocX());
                 int y = (int) Math.round(car.getLocY());
-                frame.drawPanel.moveit(x, y);
+                frame.drawPanel.moveit(x, y, cars.indexOf(car));
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
