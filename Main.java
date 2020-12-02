@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,7 +23,7 @@ public class Main {
         lastbil.move();
 
         lastbil.setCurrentSpeed(31);
-        lastbil.raiseBed(30);
+        lastbil.liftBed(30);
         lastbil.move();
         lastbil.lowerBed(31);
 

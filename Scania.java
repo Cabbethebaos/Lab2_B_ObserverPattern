@@ -33,9 +33,11 @@ public class Scania extends Truck{
      * Metod som höjer flaket till max 70 grader samtidigt när lastbilen står still.
      * @param raise
      */
-    public void raiseBed(int raise){
-        if(degree + raise <= 70 && this.getCurrentSpeed() <= 0.1)
+    public void liftBed(int raise){
+        if(degree + raise <= 70 && this.getCurrentSpeed() == 0){
             degree += raise;
+            System.out.println("Bed is being lifted by " + raise + " degrees.");
+        }
         else
             System.out.println("Either can't raise to by such degree or vechile is moving");
     }
@@ -45,8 +47,11 @@ public class Scania extends Truck{
      * @param lower
      */
     public void lowerBed(int lower){
-        if(degree - lower >= 0)
+        if(degree - lower >= 0){
             degree -= lower;
+            System.out.println("Bed is being lowered by " + lower + " degrees.");
+        }
+
         else
             System.out.println("Can't lower to by such degree");
     }
@@ -58,7 +63,5 @@ public class Scania extends Truck{
     public void move() {
         if (this.degree == 0)
             super.move();
-        else
-            System.out.println("Bed is not at zero degrees");
     }
 }

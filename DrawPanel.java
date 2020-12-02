@@ -47,7 +47,7 @@ public class DrawPanel extends JPanel{
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            v.setLocX(placement);
+            v.setLocY(placement);
             placement += 100;
         }
 
@@ -60,13 +60,12 @@ public class DrawPanel extends JPanel{
         super.paintComponent(g);
 
         for(int i = 0; i < images.size(); i++){
-              g.drawImage(images.get(i), points.get(i).x, points.get(i).y, null); // see javadoc for more info on the parameters
+            g.drawImage(images.get(i), points.get(i).x, points.get(i).y, null); // see javadoc for more info on the parameters
 
 
-          }
+        }
 
 
 
     }}
-
 

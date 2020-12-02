@@ -10,6 +10,12 @@ public abstract class Vehicle implements Movable {
     private double locY; //Y coordinate of location of Car
     private int dirr; //0 = north, 1=east, 2=south, 3=west
 
+    public boolean isEngineOn() {
+        return engineOn;
+    }
+
+    private boolean engineOn; // Anger om fordonets motor är på
+
     public Vehicle(Color color, int enginePower, String modelName) {
 
         this.color = color;
@@ -132,6 +138,7 @@ public abstract class Vehicle implements Movable {
      * startar motorn och sätter currentspeed till 0.1
      */
     protected void startEngine() {
+        this.engineOn = true;
         this.currentSpeed = 0.1;
     }
 
@@ -139,6 +146,7 @@ public abstract class Vehicle implements Movable {
      * stänger av motorn och sätter hastighet till 0
      */
     protected void stopEngine() {
+        this.engineOn = false;
         this.currentSpeed = 0;
     }
 
@@ -164,10 +172,13 @@ public abstract class Vehicle implements Movable {
      * Eftersom vi endast tillåter värden mellan 0 och 1 kan bilen inte bromsas av denna funktion
      */
     public void gas(double amount) {
-        if (amount >= 0 && amount <= 1)
-            incrementSpeed(amount);
+        if (amount >= 0 && amount <= 1 )
+            if(engineOn)
+                incrementSpeed(amount);
+            else
+                System.out.println("Engine is turned off!");
         else
-            throw new RuntimeException("invalid number");
+            System.out.println("invalid number!");
     }
 
     /**

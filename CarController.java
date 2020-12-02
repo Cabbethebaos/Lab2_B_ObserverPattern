@@ -100,4 +100,40 @@ public class CarController {
             car.brake(brake);
         }
     }
+
+    /**
+     * Sätter på turbon om Saab95
+     */
+    void turboOn() {
+        for (Vehicle car : cars)
+            if(car instanceof Saab95 )
+                ((Saab95) car).setTurboOn();
+    }
+
+    /**
+     * Stänger av på turbon om Saab95
+     */
+    void turboOff() {
+        for (Vehicle v : cars)
+            if(v instanceof Saab95 )
+                ((Saab95) v).setTurboOff();
+    }
+
+    /**
+     * Stänger av på turbon om Saab95
+     */
+    void liftBed() {
+        for (Vehicle v : cars)
+            if(v instanceof Scania )
+                ((Scania) v).liftBed(45);
+    }
+
+    /**
+     * Stänger av på turbon om Saab95
+     */
+    void lowerBed() {
+        for (Vehicle v : cars)
+            if(v instanceof Scania )
+                ((Scania) v).lowerBed(45);
+    }
 }

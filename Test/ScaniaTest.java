@@ -15,7 +15,7 @@ public class ScaniaTest {
 
     @Test
     public void testRaiseBed(){
-        scania.raiseBed(70); // 0 standard
+        scania.liftBed(70); // 0 standard
         Assert.assertTrue(scania.getDegree() == 70);
     }
 
