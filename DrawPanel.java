@@ -30,10 +30,10 @@ public class DrawPanel extends JPanel{
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
         // Print an error message in case file is not found with a try/catch block
-        int placement = 0; // Position i x-led
+        int placement = 0; // Position in y-axis in order for the images not to be on top of each other
 
         for(Vehicle v : vehicles) {
-            points.add(new Point(placement, 0)); //ny point för varje ny bild
+            points.add(new Point(0, placement)); //ny point för varje ny bild
 
             try {
                 // You can remove the "pics" part if running outside of IntelliJ and
@@ -43,7 +43,6 @@ public class DrawPanel extends JPanel{
                 // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
                 // if you are starting in IntelliJ.
                 images.add(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/" + v.getModelName() + ".jpg")));
-
 
             } catch (IOException ex) {
                 ex.printStackTrace();
