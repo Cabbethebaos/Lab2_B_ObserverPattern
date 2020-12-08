@@ -29,12 +29,14 @@ public class CarController {
 
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
-    // A list of cars, modify if needed
-    public List<Vehicle> cars = new ArrayList<>();
-
+    // The carmodel that the controller will controll
+    CarModel m;
+    public CarController(CarModel m){
+        this.m = m;
+    }
     //methods:
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         // Instance of this class
         CarController cc = new CarController();
 
@@ -48,6 +50,8 @@ public class CarController {
         // Start the timer
         cc.timer.start();
     }
+    */
+
 
 
 
@@ -56,84 +60,18 @@ public class CarController {
      * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Vehicle car : cars) {
-                if(car.getLocation().y > 500 || car.getLocation().y < 0 || car.getLocation().x < 0 || car.getLocation().x > 700)
-                    car.turnAround();
+            for (Vehicle v : m.vehicles) {
+                if(v.getLocation().y > 500 || v.getLocation().y < 0 || v.getLocation().x < 0 || v.getLocation().x > 700)
+                    v.turnAround();
 
-                car.move();
-                int x = (int) Math.round(car.getLocation().x);
-                int y = (int) Math.round(car.getLocation().y);
-                frame.drawPanel.moveit(x, y, cars.indexOf(car));
+                v.move();
+                int x = (int) Math.round(v.getLocation().x);
+                int y = (int) Math.round(v.getLocation().y);
+                frame.drawPanel.moveit(x, y, m.vehicles.indexOf(v));
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
         }
     }
 
-    // Allt nedan är egentligen del av Modell ifall av M-V-C
-
-    public void start() {
-        for (Vehicle car : cars)
-            car.startEngine();
-    }
-
-    public void stop() {
-        for (Vehicle car : cars)
-            car.stopEngine();
-    }
-
-    // Calls the gas method for each car once
-    void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        for (Vehicle car : cars)
-            car.gas(gas);
-
-    }
-
-    /**
-     * Anropar BRAKE metoden för varje car i cars listan.
-     * @param amount
-     */
-    void brake(int amount) {
-        double brake = ((double) amount) / 100;
-        for (Vehicle car : cars)
-            car.brake(brake);
-
-    }
-
-    /**
-     * Sätter på turbon om Saab95
-     */
-    void turboOn() {
-        for (Vehicle car : cars)
-            if(car instanceof Saab95 )
-                ((Saab95) car).setTurboOn();
-    }
-
-    /**
-     * Stänger av på turbon om Saab95
-     */
-    void turboOff() {
-        for (Vehicle v : cars)
-            if(v instanceof Saab95 )
-                ((Saab95) v).setTurboOff();
-    }
-
-    /**
-     * Stänger av på turbon om Saab95
-     */
-    void liftBed() {
-        for (Vehicle v : cars)
-            if(v instanceof Scania )
-                ((Scania) v).liftBed(45);
-    }
-
-    /**
-     * Stänger av på turbon om Saab95
-     */
-    void lowerBed() {
-        for (Vehicle v : cars)
-            if(v instanceof Scania )
-                ((Scania) v).lowerBed(45);
-    }
 }

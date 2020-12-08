@@ -6,6 +6,9 @@ public abstract class Vehicle implements Movable {
     private String modelName; // The car model name
     private double currentSpeed; // The current speed of the car
     private double enginePower; // Engine power of the car
+    private double locX; //X coordinate of Location of Car
+    private double locY; //Y coordinate of location of Car
+    private int dirr; //0 = north, 1=east, 2=south, 3=west
     private boolean engineOn; // Anger om fordonets motor är på
     private Point location; // location stored as a point
     private int offset = 0; // int thats holds offset variable
@@ -47,6 +50,9 @@ public abstract class Vehicle implements Movable {
     public Point getLocation(){
         return new Point(this.location);
     }
+    public void setLocation(Point newLocation){
+        this.location = new Point(newLocation);
+    }
 
     /**
      * Returnerar true/false beroende om motorn på/av
@@ -70,6 +76,55 @@ public abstract class Vehicle implements Movable {
      */
     public void setModelName(String modelName) {
         this.modelName = modelName;
+    }
+
+    /**
+     *
+     * @return Y-koordinaten
+     */
+    public double getLocY() {
+        return locY;
+    }
+
+    /**
+     *
+     * @param locY Sätter Y-koordinaten
+     */
+
+    public void setLocY(double locY) {
+        this.locY = locY;
+    }
+
+    /**
+     *
+     * @return X-koordinaten
+     */
+    public double getLocX() {
+        return locX;
+    }
+
+    /**
+     *
+     * @param locX sätter x-koordinaten
+     */
+    public void setLocX(double locX) {
+        this.locX = locX;
+    }
+
+    /**
+     *
+     * @return vilken dirr bilen pekar
+     */
+    public int getDirr() {
+        return dirr;
+    }
+
+    /**
+     *
+     * @param dirr sätter direction
+     */
+    public void setDirr(int dirr) {
+        this.dirr = dirr;
     }
 
     /**
