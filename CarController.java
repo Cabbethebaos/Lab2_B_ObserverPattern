@@ -70,6 +70,8 @@ public class CarController {
         }
     }
 
+    // Allt nedan är egentligen del av Modell ifall av M-V-C
+
     public void start() {
         for (Vehicle car : cars)
             car.startEngine();

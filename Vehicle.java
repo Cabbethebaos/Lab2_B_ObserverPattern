@@ -9,12 +9,8 @@ public abstract class Vehicle implements Movable {
     private double locX; //X coordinate of Location of Car
     private double locY; //Y coordinate of location of Car
     private int dirr; //0 = north, 1=east, 2=south, 3=west
-
-    public boolean isEngineOn() {
-        return engineOn;
-    }
-
     private boolean engineOn; // Anger om fordonets motor är på
+
 
     public Vehicle(Color color, int enginePower, String modelName) {
 
@@ -26,6 +22,14 @@ public abstract class Vehicle implements Movable {
         locX = 0;
         locY = 0;
         dirr = 0;
+    }
+
+    /**
+     * Returnerar true/false beroende om motorn på/av
+     * @return
+     */
+    public boolean isEngineOn() {
+        return engineOn;
     }
 
     /**
@@ -235,14 +239,12 @@ public abstract class Vehicle implements Movable {
             dirr = 0;
         else if(dirr == 3)
             dirr = 1;
-
     }
 
     /**
      *
      * @param speed värdet som hastigheten ska sättas till
      */
-
     public void setCurrentSpeed(double speed) {
         currentSpeed = speed;
     }

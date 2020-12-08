@@ -20,8 +20,6 @@ public class DrawPanel extends JPanel{
     // TODO: Make this genereal for all cars
     void moveit(int x, int y, int idx){
         points.get(idx).setLocation(x,y);
-
-
     }
 
     // Initializes the panel and reads the images
@@ -61,8 +59,6 @@ public class DrawPanel extends JPanel{
 
         for(int i = 0; i < images.size(); i++){
             g.drawImage(images.get(i), points.get(i).x, points.get(i).y, null); // see javadoc for more info on the parameters
-
-
         }
 
 

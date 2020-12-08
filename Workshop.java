@@ -25,7 +25,6 @@ public class Workshop<T extends Car> {
         this.capacity = capacity;
         brokenCars = new LinkedHashSet<>();
     }
-//<T extends VehicleType>
 
     /**
      * Metod som tar objekt av den angivna typen (dvs, det man skapade Workshop till) sedan adderar den till HashMap'n
