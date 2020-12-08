@@ -10,6 +10,8 @@ public abstract class Vehicle implements Movable {
     private double locY; //Y coordinate of location of Car
     private int dirr; //0 = north, 1=east, 2=south, 3=west
     private boolean engineOn; // Anger om fordonets motor är på
+    private Point location; // location stored as a point
+    private int offset = 0; // int thats holds offset variable
 
 
     public Vehicle(Color color, int enginePower, String modelName) {
@@ -22,6 +24,17 @@ public abstract class Vehicle implements Movable {
         locX = 0;
         locY = 0;
         dirr = 0;
+
+        this.location = new Point(0, offset);
+        offset += 100;
+    }
+
+    /**
+     * Returnerar en point med hänsyn till mutabilitet
+     * @return
+     */
+    public Point getLocation(){
+        return new Point(this.location);
     }
 
     /**
