@@ -33,6 +33,14 @@ public abstract class Vehicle implements Movable {
     }
 
     /**
+     * returnerar en int som lagrar direction
+     * @return
+     */
+    public int getDir(){
+        return dir.getDir();
+    }
+
+    /**
      * Returnerar en point med hänsyn till mutabilitet
      * @return
      */

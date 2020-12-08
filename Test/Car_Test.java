@@ -79,33 +79,33 @@ public class Car_Test {
     public void testMove() {
         volvo.setCurrentSpeed(10); // Riktad norr
         volvo.move();
-        Assert.assertTrue(0 < volvo.getLocY());
+        Assert.assertTrue(0 < volvo.getLocation().y);
     }
 
     @Test
     public void testTurnLeft() {
-        if (volvo.getDirr() == 0){// om dirr west --> north
+        if (volvo.getDir() == 0){// om dirr west --> north
             volvo.turnLeft();
-            Assert.assertTrue(volvo.getDirr() == 3);
+            Assert.assertTrue(volvo.getDir() == 3);
         }
         else{
-            int temp = volvo.getDirr();
+            int temp = volvo.getDir();
             volvo.turnLeft();
-            Assert.assertTrue(temp > volvo.getDirr());
+            Assert.assertTrue(temp > volvo.getDir());
         }
 
     }
 
     @Test
     public void testTurnRight() {
-        if (volvo.getDirr() == 3){// om dirr west --> north
+        if (volvo.getDir() == 3){// om dirr west --> north
             volvo.turnRight();
-            Assert.assertTrue(volvo.getDirr() == 0);
+            Assert.assertTrue(volvo.getDir() == 0);
         }
         else{
-            int temp = volvo.getDirr();
+            int temp = volvo.getDir();
             volvo.turnRight();
-            Assert.assertTrue(temp < volvo.getDirr());
+            Assert.assertTrue(temp < volvo.getDir());
         }
 
     }

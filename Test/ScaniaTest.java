@@ -23,6 +23,6 @@ public class ScaniaTest {
     public void testMove() {
         scania.setCurrentSpeed(10); // Riktad norr
         scania.move();
-        Assert.assertTrue(0 < scania.getLocY());
+        Assert.assertTrue(0 < scania.getLocation().y);
     }
 }
