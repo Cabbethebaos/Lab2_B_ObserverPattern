@@ -12,8 +12,6 @@ public abstract class Vehicle implements Movable {
 
     private Direction dir;
 
-
-
     public Vehicle(Color color, int enginePower, String modelName) {
 
         this.color = color;
@@ -25,6 +23,13 @@ public abstract class Vehicle implements Movable {
 
         this.location = new Point(0, offset);
         offset += 100;
+    }
+
+    /**
+     * metod som vänder bilen, gör på detta viset för att den ska vara immutable
+     */
+    public void turnAround(){
+        dir.turnAround();
     }
 
     /**

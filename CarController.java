@@ -57,12 +57,12 @@ public class CarController {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Vehicle car : cars) {
-                if(car.getLocY() > 500 || car.getLocY() < 0 || car.getLocX() < 0 || car.getLocX() > 700)
+                if(car.getLocation().y > 500 || car.getLocation().y < 0 || car.getLocation().x < 0 || car.getLocation().x > 700)
                     car.turnAround();
 
                 car.move();
-                int x = (int) Math.round(car.getLocX());
-                int y = (int) Math.round(car.getLocY());
+                int x = (int) Math.round(car.getLocation().x);
+                int y = (int) Math.round(car.getLocation().y);
                 frame.drawPanel.moveit(x, y, cars.indexOf(car));
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
