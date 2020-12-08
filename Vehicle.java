@@ -6,12 +6,12 @@ public abstract class Vehicle implements Movable {
     private String modelName; // The car model name
     private double currentSpeed; // The current speed of the car
     private double enginePower; // Engine power of the car
-    private double locX; //X coordinate of Location of Car
-    private double locY; //Y coordinate of location of Car
-    private int dirr; //0 = north, 1=east, 2=south, 3=west
     private boolean engineOn; // Anger om fordonets motor är på
     private Point location; // location stored as a point
     private int offset = 0; // int thats holds offset variable
+
+    private Direction dir;
+
 
 
     public Vehicle(Color color, int enginePower, String modelName) {
@@ -21,9 +21,7 @@ public abstract class Vehicle implements Movable {
         this.modelName = modelName;
         stopEngine();
 
-        locX = 0;
-        locY = 0;
-        dirr = 0;
+        dir = new Direction();
 
         this.location = new Point(0, offset);
         offset += 100;
@@ -59,55 +57,6 @@ public abstract class Vehicle implements Movable {
      */
     public void setModelName(String modelName) {
         this.modelName = modelName;
-    }
-
-    /**
-     *
-     * @return Y-koordinaten
-     */
-    public double getLocY() {
-        return locY;
-    }
-
-    /**
-     *
-     * @param locY Sätter Y-koordinaten
-     */
-
-    public void setLocY(double locY) {
-        this.locY = locY;
-    }
-
-    /**
-     *
-     * @return X-koordinaten
-     */
-    public double getLocX() {
-        return locX;
-    }
-
-    /**
-     *
-     * @param locX sätter x-koordinaten
-     */
-    public void setLocX(double locX) {
-        this.locX = locX;
-    }
-
-    /**
-     *
-     * @return vilken dirr bilen pekar
-     */
-    public int getDirr() {
-        return dirr;
-    }
-
-    /**
-     *
-     * @param dirr sätter direction
-     */
-    public void setDirr(int dirr) {
-        this.dirr = dirr;
     }
 
     /**
@@ -214,44 +163,13 @@ public abstract class Vehicle implements Movable {
      *  Rör sig i den riktningen som bilen pekar med nuvarande hastighet
      */
     public void move() {
-        if (dirr == 0) {
-            locY += this.getCurrentSpeed();
-        } else if (dirr == 1) {
-            locX += this.getCurrentSpeed();
-        } else if (dirr == 2) {
-            locY -= this.getCurrentSpeed();
-        } else locX -= this.getCurrentSpeed();
-
-    }
-
-    /**
-     * Svänger vänster
-     */
-    public void turnLeft() {
-        if (dirr == 0) {
-            dirr = 3;
-        } else dirr -= 1;
-    }
-
-    /**
-     *  Svänger höger
-     */
-    public void turnRight() {
-        if (dirr == 3) {
-            dirr = 0;
-        } else dirr += 1;
-    }
-
-    /**
-     * Vänder bilen om
-     */
-    public void turnAround(){
-        if(dirr < 1 )
-            dirr += 2;
-        else if(dirr == 2)
-            dirr = 0;
-        else if(dirr == 3)
-            dirr = 1;
+        if (dir.getDir() == 0) {
+            location.y += this.getCurrentSpeed();
+        } else if (dir.getDir() == 1) {
+            location.x += this.getCurrentSpeed();
+        } else if (dir.getDir() == 2) {
+            location.y -= this.getCurrentSpeed();
+        } else location.x -= this.getCurrentSpeed();
     }
 
     /**
