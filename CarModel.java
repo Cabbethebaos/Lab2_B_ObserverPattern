@@ -1,8 +1,10 @@
+import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarModel {
+public class CarModel extends JComponent {
 
     List<Vehicle> vehicles = new ArrayList<>();
 
@@ -11,7 +13,24 @@ public class CarModel {
         this.vehicles.add(new Scania(Color.red, 278, "Scania"));
         this.vehicles.add(new Saab95());
     }
-    // Allt nedan är egentligen del av Modell ifall av M-V-C
+
+    public static void main(String[] args) {
+        // Instance of this class
+        CarModel carModel = new CarModel();
+        CarView carView = new CarView(carModel);
+        CarController carController = new CarController(carModel);
+
+        carModel.vehicles.add(new Volvo240());
+        carModel.vehicles.add(new Scania(Color.red, 278, "Scania"));
+        carModel.vehicles.add(new Saab95());
+
+        // Start the timer
+        carController.startTimer();
+    }
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
 
     public void start() {
         for (Vehicle car : vehicles)
@@ -72,7 +91,8 @@ public class CarModel {
     /**
      * Stänger av på turbon om Saab95
      */
-    void lowerBed() {        for (Vehicle v : vehicles)
+    void lowerBed() {
+        for (Vehicle v : vehicles)
             if(v instanceof Scania )
                 ((Scania) v).lowerBed(45);
     }

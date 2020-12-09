@@ -9,13 +9,4 @@ public interface Movable {
      */
     void move();
 
-    /**
-     * sväng vänster metod som måste implementeras av "subklasser"
-     */
-    void turnLeft();
-
-    /**
-     * sväng höger metod som måste implementeras av "subklasser"
-     */
-    void turnRight();
 }

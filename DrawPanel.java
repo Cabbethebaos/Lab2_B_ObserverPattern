@@ -27,41 +27,9 @@ public class DrawPanel extends JPanel{
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
-        // Print an error message in case file is not found with a try/catch block
-        int placement = 0; // Position in y-axis in order for the images not to be on top of each other
-
-        for(Vehicle v : vehicles) {
-            points.add(new Point(0, placement)); //ny point för varje ny bild
-
-            try {
-                // You can remove the "pics" part if running outside of IntelliJ and
-                // everything is in the same main folder.
-                // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
-
-                // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
-                // if you are starting in IntelliJ.
-                images.add(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/" + v.getModelName() + ".jpg")));
-
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-            v.setLocY(placement);
-            placement += 100;
-        }
-
     }
 
-    // This method is called each time the panel updates/refreshes/repaints itself
-    // TODO: Change to suit your needs.
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        for(int i = 0; i < images.size(); i++){
-            g.drawImage(images.get(i), points.get(i).x, points.get(i).y, null); // see javadoc for more info on the parameters
-        }
 
 
-
-    }}
+}
 

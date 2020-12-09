@@ -13,12 +13,14 @@ import java.awt.event.ActionListener;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
-public class CarView extends JFrame{
+public class CarView extends JComponent{
     private static final int X = 800;
     private static final int Y = 800;
 
-    // The controller member
-    CarController carC;
+    // The model member
+    CarModel m;
+
+    JFrame frame; // gör inget med denna
 
     DrawPanel drawPanel;
 
@@ -55,26 +57,32 @@ public class CarView extends JFrame{
 
     /**
      * Konstruktor som tar ett namn på frame'n och ett argument av typ CarController och initierar den.
-     * @param framename
-     * @param cc
+     * @param m
      */
-    public CarView(String framename, CarController cc){
-        this.carC = cc;
-        this.drawPanel = new DrawPanel(X, Y-240, carC.cars);
-        initComponents(framename);
+    public CarView(CarModel m){
+        this.m = m;
+        this.drawPanel = new DrawPanel(X, Y-240, m.vehicles);
+        initComponents();
     }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        for(int i = 0; i < m.vehicles.size(); i++){
+            g.drawImage(m.vehicles.get(i).getImage(), m.vehicles.get(i).getLocation().x, m.vehicles.get(i).getLocation().y, null); // see javadoc for more info on the parameters
+        }
+    }
+
 
     // Sets everything in place and fits everything
     // TODO: Take a good look and make sure you understand how these methods and components work
-    private void initComponents(String title) {
+    private void initComponents() {
 
-        this.setTitle(title);
         this.setPreferredSize(new Dimension(X,Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
-
-
 
         SpinnerModel spinnerModel =
                 new SpinnerNumberModel(0, //initial value
@@ -136,7 +144,7 @@ public class CarView extends JFrame{
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.gas(gasAmount);
+                m.gas(gasAmount);
             }
         });
 
@@ -146,7 +154,7 @@ public class CarView extends JFrame{
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.brake(brakeAmount);
+                m.brake(brakeAmount);
             }
         });
 
@@ -156,7 +164,7 @@ public class CarView extends JFrame{
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.start();
+                m.start();
             }
         });
 
@@ -166,7 +174,7 @@ public class CarView extends JFrame{
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.stop();
+                m.stop();
             }
         });
 
@@ -176,7 +184,7 @@ public class CarView extends JFrame{
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.turboOn();
+                m.turboOn();
             }
         });
 
@@ -186,7 +194,7 @@ public class CarView extends JFrame{
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.turboOff();
+                m.turboOff();
             }
         });
 
@@ -196,7 +204,7 @@ public class CarView extends JFrame{
         liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.liftBed();
+                m.liftBed();
             }
         });
 
@@ -206,13 +214,13 @@ public class CarView extends JFrame{
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.lowerBed();
+                m.lowerBed();
             }
         });
 
 
         // Make the frame pack all it's components by respecting the sizes if possible.
-        this.pack();
+        frame.pack();
 
         // Get the computer screen resolution
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -221,6 +229,6 @@ public class CarView extends JFrame{
         // Make the frame visible
         this.setVisible(true);
         // Make sure the frame exits when "x" is pressed
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
