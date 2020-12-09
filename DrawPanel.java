@@ -36,12 +36,6 @@ public class DrawPanel extends JPanel{
             points.add(new Point(0, placement)); //ny point för varje ny bild
 
             try {
-                // You can remove the "pics" part if running outside of IntelliJ and
-                // everything is in the same main folder.
-                // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
-
-                // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
-                // if you are starting in IntelliJ.
                 images.add(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/" + v.getModelName() + ".jpg")));
 
             } catch (IOException ex) {

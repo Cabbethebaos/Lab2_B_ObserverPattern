@@ -22,8 +22,6 @@ public class CarView extends JComponent{
 
     JFrame frame; // gör inget med denna
 
-    CarController c;
-
     DrawPanel drawPanel;
 
     JPanel controlPanel = new JPanel();
@@ -61,9 +59,8 @@ public class CarView extends JComponent{
      * Konstruktor som tar ett namn på frame'n och ett argument av typ CarController och initierar den.
      * @param m
      */
-    public CarView(CarModel m, CarController c){
+    public CarView(CarModel m){
         this.m = m;
-        this.c = c;
         this.drawPanel = new DrawPanel(X, Y-240, m.vehicles);
         initComponents();
     }
@@ -147,7 +144,7 @@ public class CarView extends JComponent{
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c.gas(gasAmount);
+                m.gas(gasAmount);
             }
         });
 
@@ -167,7 +164,7 @@ public class CarView extends JComponent{
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c.start();
+                m.start();
             }
         });
 
@@ -177,7 +174,7 @@ public class CarView extends JComponent{
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c.stop();
+                m.stop();
             }
         });
 
@@ -187,7 +184,7 @@ public class CarView extends JComponent{
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c.turboOn();
+                m.turboOn();
             }
         });
 
@@ -197,7 +194,7 @@ public class CarView extends JComponent{
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c.turboOff();
+                m.turboOff();
             }
         });
 
@@ -207,7 +204,7 @@ public class CarView extends JComponent{
         liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c.liftBed();
+                m.liftBed();
             }
         });
 
@@ -217,7 +214,7 @@ public class CarView extends JComponent{
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c.lowerBed();
+                m.lowerBed();
             }
         });
 
