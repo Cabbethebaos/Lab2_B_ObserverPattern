@@ -1,4 +1,3 @@
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -9,6 +8,7 @@ public abstract class Vehicle implements Movable {
     private String modelName; // The car model name
     private double currentSpeed; // The current speed of the car
     private double enginePower; // Engine power of the car
+    private int dirr; //0 = north, 1=east, 2=south, 3=west
     private boolean engineOn; // Anger om fordonets motor är på
     private Point location; // location stored as a point
     private int offset = 0; // int thats holds offset variable
@@ -99,6 +99,22 @@ public abstract class Vehicle implements Movable {
         this.modelName = modelName;
     }
 
+
+    /**
+     *
+     * @return vilken dirr bilen pekar
+     */
+    public int getDirr() {
+        return dirr;
+    }
+
+    /**
+     *
+     * @param dirr sätter direction
+     */
+    public void setDirr(int dirr) {
+        this.dirr = dirr;
+    }
 
     /**
      *
