@@ -12,10 +12,11 @@ public class CarView extends JFrame {
     private static final int X = 800;
     private static final int Y = 800;
 
+    /**
+     * Deklerationa av det som kommer att utgöra vyn
+     */
     DrawPanel drawPanel;
-
     JPanel controlPanel = new JPanel();
-
     CarController carController;
 
     /**

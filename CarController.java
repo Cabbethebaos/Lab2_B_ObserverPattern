@@ -1,34 +1,33 @@
 public class CarController {
 
-
     protected CarModel m;
 
     public CarController(CarModel m){
         this.m = m;
     }
 
-    public void gas(int gasAmount){
+    protected void gas(int gasAmount){
         m.gas(gasAmount);
     }
-    public void brake (int brakeAmount) {
+    protected void brake (int brakeAmount) {
         m.brake(brakeAmount);
     }
-    public void start(){
+    protected void start(){
         m.start();
     }
-    public void stop(){
+    protected void stop(){
         m.stop();
     }
-    public void turboOn(){
+    protected void turboOn(){
         m.turboOn();
     }
-    public void turboOff(){
+    protected void turboOff(){
         m.turboOff();
     }
-    public void liftBed(){
+    protected void liftBed(){
         m.liftBed();
     }
-    public void lowerBed(){
+    protected void lowerBed(){
         m.lowerBed();
     }
 

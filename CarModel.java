@@ -1,35 +1,29 @@
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarModel {
 
-    List<Vehicle> vehicles = new ArrayList<>();
-
-    public CarModel(){
-        this.vehicles.add(new Volvo240());
-        this.vehicles.add(new Scania(Color.red, 278, "Scania"));
-        this.vehicles.add(new Saab95());
-    }
-
-
+    /**
+     * Lista som håller alla bilarna i programmet
+     */
+    protected List<Vehicle> vehicles = new ArrayList<>();
 
     public List<Vehicle> getVehicles() {
         return vehicles;
     }
 
-    public void start() {
+    protected void start() {
         for (Vehicle car : vehicles)
             car.startEngine();
     }
 
-    public void stop() {
+    protected void stop() {
         for (Vehicle car : vehicles)
             car.stopEngine();
     }
 
     // Calls the gas method for each car once
-    void gas(int amount) {
+    protected void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Vehicle car : vehicles)
             car.gas(gas);
@@ -40,7 +34,7 @@ public class CarModel {
      * Anropar BRAKE metoden för varje car i cars listan.
      * @param amount
      */
-    void brake(int amount) {
+    protected void brake(int amount) {
         double brake = ((double) amount) / 100;
         for (Vehicle car : vehicles)
             car.brake(brake);
@@ -50,7 +44,7 @@ public class CarModel {
     /**
      * Sätter på turbon om Saab95
      */
-    void turboOn() {
+    protected void turboOn() {
         for (Vehicle car : vehicles)
             if(car instanceof Saab95 )
                 ((Saab95) car).setTurboOn();
@@ -59,7 +53,7 @@ public class CarModel {
     /**
      * Stänger av på turbon om Saab95
      */
-    void turboOff() {
+    protected void turboOff() {
         for (Vehicle v : vehicles)
             if(v instanceof Saab95 )
                 ((Saab95) v).setTurboOff();
@@ -68,7 +62,7 @@ public class CarModel {
     /**
      * Stänger av på turbon om Saab95
      */
-    void liftBed() {
+    protected void liftBed() {
         for (Vehicle v : vehicles)
             if(v instanceof Scania )
                 ((Scania) v).liftBed(45);
@@ -77,7 +71,7 @@ public class CarModel {
     /**
      * Stänger av på turbon om Saab95
      */
-    void lowerBed() {
+    protected void lowerBed() {
         for (Vehicle v : vehicles)
             if(v instanceof Scania )
                 ((Scania) v).lowerBed(45);

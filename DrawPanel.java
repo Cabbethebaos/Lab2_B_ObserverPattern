@@ -17,16 +17,6 @@ public class DrawPanel extends JPanel{
     List<BufferedImage> images = new ArrayList<>();
     List<Point> points = new ArrayList<>();
 
-    /**
-     * Move metoden som uppdaterar bilarnas plats
-     * @param x
-     * @param y
-     * @param idx
-     */
-    void moveit(int x, int y, int idx){
-        points.get(idx).setLocation(x,y);
-
-    }
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y, List<Vehicle> vehicles) {
@@ -44,6 +34,17 @@ public class DrawPanel extends JPanel{
                 ex.printStackTrace();
             }
         }
+    }
+
+    /**
+     * Move metoden som uppdaterar bilarnas plats
+     * @param x
+     * @param y
+     * @param idx
+     */
+    protected void moveit(int x, int y, int idx){
+        points.get(idx).setLocation(x,y);
+
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
