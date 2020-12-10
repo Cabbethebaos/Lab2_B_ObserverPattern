@@ -35,6 +35,18 @@ public abstract class Vehicle implements Movable {
     public void turnAround(){
         dir.turnAround();
     }
+    /**
+     * metod som svänger vänster, gör på detta viset för att den ska vara immutable
+     */
+    public void turnLeft(){
+        dir.turnLeft();
+    }
+    /**
+     * metod som svänger höger, gör på detta viset för att den ska vara immutable
+     */
+    public void turnRight(){
+        dir.turnRight();
+    }
 
     /**
      * returnerar en int som lagrar direction

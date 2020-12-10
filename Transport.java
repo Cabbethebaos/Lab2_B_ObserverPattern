@@ -64,8 +64,8 @@ public abstract class Transport extends Vehicle {
      * @return
      */
     public double checkDistance(Car carToLoad) {
-        double deltaX = abs(this.getLocX() - carToLoad.getLocX());
-        double deltaY = abs(this.getLocY() - carToLoad.getLocY());
+        double deltaX = abs(this.getLocation().x - carToLoad.getLocation().x);
+        double deltaY = abs(this.getLocation().y - carToLoad.getLocation().y);
 
         return sqrt(pow(deltaX, 2) + pow(deltaY, 2));
     }
@@ -88,10 +88,8 @@ public abstract class Transport extends Vehicle {
     public void move() {
         if (this.rampUp){
             super.move();
-            for(Car car : carsLoaded){
-                car.setLocX(this.getLocX());
-                car.setLocY(this.getLocY());
-            }
+            for(Car car : carsLoaded)
+                car.setLocation(this.getLocation());
         }
         else
             System.out.println("Ramp is not up");
