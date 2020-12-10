@@ -12,7 +12,7 @@ public abstract class Vehicle implements Movable {
     private int dirr; //0 = north, 1=east, 2=south, 3=west
     private boolean engineOn; // Anger om fordonets motor är på
     private Point location; // location stored as a point
-    private int offset = 0; // int thats holds offset variable
+    private static int offset = 0; // int thats holds offset variable
 
     private Direction dir;
 
@@ -26,7 +26,6 @@ public abstract class Vehicle implements Movable {
 
         this.location = new Point(0, offset);
         offset += 100;
-
     }
 
     /**

@@ -1,18 +1,35 @@
-public class CarController extends Observer{
+public class CarController {
 
 
+    protected CarModel m;
 
-
-
-
-
-    public CarController(Subject subject){
-        this.subject = subject;
-        this.subject.attach(this);
+    public CarController(CarModel m){
+        this.m = m;
     }
 
-    @Override
-    public void update() {
-        System.out.println( "Hex String: " + Integer.toHexString( subject.getState() ).toUpperCase() );
+    public void gas(int gasAmount){
+        m.gas(gasAmount);
     }
+    public void brake (int brakeAmount) {
+        m.brake(brakeAmount);
+    }
+    public void start(){
+        m.start();
+    }
+    public void stop(){
+        m.stop();
+    }
+    public void turboOn(){
+        m.turboOn();
+    }
+    public void turboOff(){
+        m.turboOff();
+    }
+    public void liftBed(){
+        m.liftBed();
+    }
+    public void lowerBed(){
+        m.lowerBed();
+    }
+
 }
