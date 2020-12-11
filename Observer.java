@@ -1,9 +1,9 @@
 
- interface Observer {
+interface Observer {
 
-     /**
-      * Update metod som måste implementeras av subklasser
-      */
+    /**
+     * Update metod som måste implementeras av subklasser
+     */
     void update();
 
 }

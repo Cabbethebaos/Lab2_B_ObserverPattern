@@ -13,7 +13,7 @@ public class CarFactory {
     }
 
     public Vehicle createRandom(int randomNumber){
-       Vehicle newVehicle;
+        Vehicle newVehicle;
         if(randomNumber == 0){
             newVehicle = createSaab95();
         }
@@ -25,6 +25,7 @@ public class CarFactory {
 
         return newVehicle;
     }
+
 
 
 }

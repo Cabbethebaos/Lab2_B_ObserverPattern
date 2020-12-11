@@ -7,6 +7,7 @@ public class SpeedView extends JFrame implements Observer{
 
     private static final int X = 300;
     private static final int Y = 100;
+    private int nrCars;
 
     JPanel speedPanel = new JPanel();
     DrawSpeedPanel drawSpeedPanel;
@@ -17,7 +18,7 @@ public class SpeedView extends JFrame implements Observer{
 
     public SpeedView(CarModel m){
         this.m = m;
-
+        this.nrCars = m.getVehicles().size();
         this.drawSpeedPanel = new DrawSpeedPanel(X, Y-40);
         createLabel();
     }
@@ -60,15 +61,26 @@ public class SpeedView extends JFrame implements Observer{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    private void updateLabel(){
+        carLabels = new ArrayList<>();
+        this.removeAll();
+        initLabel();
+        this.nrCars = m.getVehicles().size();
+    }
+
     @Override
     public void update() {
-        repaint();
+        if (nrCars != m.getVehicles().size()) {
+            updateLabel();
+        }
 
-        for(Vehicle v : m.vehicles)
-            for(JLabel label : carLabels)
-                if(label.toString().contains(v.getModelName()))
+        int i = 0;
+        for (Vehicle v : m.vehicles)
+            for (JLabel label : carLabels)
+                if (label.toString().contains(v.getModelName()))
                     label.setText(v.getModelName() + ": " + v.getCurrentSpeed() + ".");
 
+    this.repaint();
 
     }
 

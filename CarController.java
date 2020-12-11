@@ -31,6 +31,7 @@ public class CarController {
         m.lowerBed();
     }
     protected void addCar(){m.addCar(); }
+    protected void removeCar(){m.removeCar();}
 
 
 }

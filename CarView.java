@@ -214,6 +214,13 @@ public class CarView extends JFrame implements Observer {
                 drawPanel.addPointsAndImages(carController.m.vehicles.get((carController.m.vehicles.size()) -1));}
         });
 
+        removeCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carController.removeCar();
+            }
+        });
+
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 
