@@ -30,8 +30,6 @@ public class App {
 
         app.run();
 
-        app.notifyAllObservers();
-
         // Start the timer
         app.timer.start();
 
