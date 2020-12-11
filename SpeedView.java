@@ -65,7 +65,7 @@ public class SpeedView extends JFrame implements Observer{
         repaint();
 
         for(JLabel label : carLabels)
-            label
+            label.
     }
 
 
