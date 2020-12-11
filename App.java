@@ -45,6 +45,7 @@ public class App {
         observers.add(new SpeedView(m));
         observers.add(new CarView(cc));
 
+
     }
 
     /* Each step the TimerListener moves all the cars in the list and tells the

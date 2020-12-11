@@ -49,8 +49,11 @@ public class DrawPanel extends JPanel{
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
 
-
+    public void removePointsAndImages(){
+        images.remove(images.size() - 1);
+        points.remove(points.size() - 1);
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself

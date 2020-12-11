@@ -12,7 +12,8 @@ public abstract class Vehicle implements Movable {
     private int dirr; //0 = north, 1=east, 2=south, 3=west
     private boolean engineOn; // Anger om fordonets motor är på
     private Point location; // location stored as a point
-    private static int offset = 0; // int thats holds offset variable
+    private static int yOffset = 0; // int thats holds offset in y direction
+    private static int xOffset = 0; // int that holds offset in x direction
 
     private Direction dir;
 
@@ -23,9 +24,14 @@ public abstract class Vehicle implements Movable {
         stopEngine();
 
         dir = new Direction();
-
-        this.location = new Point(0, offset);
-        offset += 100;
+        this.location = new Point(xOffset, yOffset);
+        if(yOffset < 500) {
+            yOffset += 100;
+        }
+        else {
+            xOffset += 100;
+            yOffset = 0;
+        }
     }
 
     /**

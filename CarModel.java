@@ -81,10 +81,15 @@ public class CarModel {
 
     protected void addCar() {
         CarFactory carAdder = new CarFactory();
+
         Random random = new Random();
-        int randomval = random.nextInt(2);
+        int randomval = random.nextInt(3);
+        System.out.println(randomval);
 
         Vehicle toBeAdded = carAdder.createRandom(randomval);
+        System.out.println(toBeAdded.getModelName());
+        //testar lite med att lägga till random bilar   */
+
 
         this.vehicles.add(toBeAdded);
 
@@ -94,7 +99,8 @@ public class CarModel {
         if (getVehicles().size() > 0) {
             int randomval = new Random().nextInt(vehicles.size());
 
-            this.vehicles.remove(randomval);
+            this.vehicles.remove(this.vehicles.size() - 1);
+
         }
 
     }

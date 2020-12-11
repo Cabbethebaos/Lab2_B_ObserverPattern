@@ -218,6 +218,7 @@ public class CarView extends JFrame implements Observer {
             @Override
             public void actionPerformed(ActionEvent e) {
                 carController.removeCar();
+                drawPanel.removePointsAndImages();
             }
         });
 
