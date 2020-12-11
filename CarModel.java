@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CarModel {
 
@@ -76,4 +77,16 @@ public class CarModel {
             if(v instanceof Scania )
                 ((Scania) v).lowerBed(45);
     }
+
+    protected void addCar(){
+        CarFactory carAdder = new CarFactory();
+        Random random = new Random();
+        int randomval = random.nextInt(2);
+
+        Vehicle toBeAdded = carAdder.createRandom(randomval);
+
+        this.vehicles.add(toBeAdded);
+
+    }
+
 }

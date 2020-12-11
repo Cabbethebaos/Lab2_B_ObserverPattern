@@ -44,6 +44,8 @@ public class CarView extends JFrame implements Observer {
     JButton turboOffButton = new JButton("Saab Turbo off");
     JButton liftBedButton = new JButton("Scania Lift Bed");
     JButton lowerBedButton = new JButton("Lower Bed");
+    JButton addCarButton = new JButton("Add Car");
+    JButton removeCarButton = new JButton("Remove Car");
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
@@ -98,7 +100,7 @@ public class CarView extends JFrame implements Observer {
             }
         });
 
-        controlPanel.setLayout(new GridLayout(2,4));
+        controlPanel.setLayout(new GridLayout(2,6));
 
         controlPanel.add(gasButton, 0);
         controlPanel.add(turboOnButton, 1);
@@ -106,6 +108,8 @@ public class CarView extends JFrame implements Observer {
         controlPanel.add(brakeButton, 3);
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
+        controlPanel.add(addCarButton, 6);
+        controlPanel.add(removeCarButton, 7);
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
@@ -201,6 +205,13 @@ public class CarView extends JFrame implements Observer {
             public void actionPerformed(ActionEvent e) {
                 carController.lowerBed();
             }
+        });
+
+        addCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carController.addCar();
+                drawPanel.addPointsAndImages(carController.m.vehicles.get((carController.m.vehicles.size()) -1));}
         });
 
         // Make the frame pack all it's components by respecting the sizes if possible.

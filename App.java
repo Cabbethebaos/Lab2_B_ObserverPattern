@@ -42,10 +42,11 @@ public class App {
      */
     public void run(){
         this.m = new CarModel();
+        CarFactory cf = new CarFactory();
 
-        m.vehicles.add(new Volvo240());
-        m.vehicles.add((new Saab95()));
-        m.vehicles.add(new Scania(Color.red, 278, "Scania"));
+        m.vehicles.add(cf.createSaab95());
+        m.vehicles.add(cf.createVolvo240());
+        m.vehicles.add(cf.createScania());
 
         this. cc = new CarController(m);
 

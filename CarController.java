@@ -30,5 +30,7 @@ public class CarController {
     protected void lowerBed(){
         m.lowerBed();
     }
+    protected void addCar(){m.addCar(); }
+
 
 }
