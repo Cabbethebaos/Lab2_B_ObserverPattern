@@ -12,9 +12,6 @@ public class DrawSpeedPanel extends JPanel{
     // Initializes the panel and reads the images
     public DrawSpeedPanel(int x, int y ) {
         this.setDoubleBuffered(true);
-        this.setPreferredSize(new Dimension(x, y));
-        this.setBackground(Color.magenta);
-
     }
 
 

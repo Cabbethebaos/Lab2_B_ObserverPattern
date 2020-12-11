@@ -5,8 +5,8 @@ import java.util.List;
 
 public class SpeedView extends JFrame implements Observer{
 
-    private static final int X = 200;
-    private static final int Y = 200;
+    private static final int X = 300;
+    private static final int Y = 100;
 
     JPanel speedPanel = new JPanel();
     DrawSpeedPanel drawSpeedPanel;
@@ -36,7 +36,7 @@ public class SpeedView extends JFrame implements Observer{
 
         this.add(drawSpeedPanel);
 
-        speedPanel.setLayout(new GridLayout(2,4));
+        speedPanel.setLayout(new GridLayout(10,1));
 
         int i = 0;
         for(JLabel label : carLabels){
@@ -64,8 +64,12 @@ public class SpeedView extends JFrame implements Observer{
     public void update() {
         repaint();
 
-        for(JLabel label : carLabels)
-            label.
+        for(Vehicle v : m.vehicles)
+            for(JLabel label : carLabels)
+                if(label.toString().contains(v.getModelName()))
+                    label.setText(v.getModelName() + ": " + v.getCurrentSpeed() + ".");
+
+
     }
 
 
