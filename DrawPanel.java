@@ -25,14 +25,7 @@ public class DrawPanel extends JPanel{
         this.setBackground(Color.green);
 
         for(Vehicle v : vehicles) {
-            points.add(v.getLocation()); // Lägger till pointsen i listan
-
-            try {
-                images.add(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/" + v.getModelName() + ".jpg")));
-
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            addPointsAndImages(v);
         }
     }
 
@@ -44,6 +37,19 @@ public class DrawPanel extends JPanel{
      */
     protected void moveit(int x, int y, int idx){
         points.get(idx).setLocation(x,y);
+
+    }
+
+    public void addPointsAndImages(Vehicle v){
+        points.add(v.getLocation());
+
+        try {
+            images.add(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/" + v.getModelName() + ".jpg")));
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
 
     }
 

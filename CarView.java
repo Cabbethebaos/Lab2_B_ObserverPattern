@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CarView extends JFrame {
+public class CarView extends JFrame implements Observer {
     /**
      * Anger storleken på vår view
      */
@@ -44,6 +44,8 @@ public class CarView extends JFrame {
     JButton turboOffButton = new JButton("Saab Turbo off");
     JButton liftBedButton = new JButton("Scania Lift Bed");
     JButton lowerBedButton = new JButton("Lower Bed");
+    JButton addCarButton = new JButton("Add Car");
+    JButton removeCarButton = new JButton("Remove Car");
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
@@ -98,7 +100,7 @@ public class CarView extends JFrame {
             }
         });
 
-        controlPanel.setLayout(new GridLayout(2,4));
+        controlPanel.setLayout(new GridLayout(2,6));
 
         controlPanel.add(gasButton, 0);
         controlPanel.add(turboOnButton, 1);
@@ -106,6 +108,8 @@ public class CarView extends JFrame {
         controlPanel.add(brakeButton, 3);
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
+        controlPanel.add(addCarButton, 6);
+        controlPanel.add(removeCarButton, 7);
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
@@ -203,6 +207,20 @@ public class CarView extends JFrame {
             }
         });
 
+        addCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carController.addCar();
+                drawPanel.addPointsAndImages(carController.m.vehicles.get((carController.m.vehicles.size()) -1));}
+        });
+
+        removeCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carController.removeCar();
+            }
+        });
+
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 
@@ -217,4 +235,20 @@ public class CarView extends JFrame {
     }
 
 
+    @Override
+    public void update() {
+        for (Vehicle v : carController.m.vehicles) {
+            if(v.getLocation().y > 500 || v.getLocation().y < 0 || v.getLocation().x < 0 || v.getLocation().x > 700)
+                v.turnAround();
+
+
+            v.move();
+            int x = (int) Math.round(v.getLocation().x);
+            int y = (int) Math.round(v.getLocation().y);
+            drawPanel.moveit(x, y, carController.m.vehicles.indexOf(v));
+            // repaint() calls the paintComponent method of the panel
+            drawPanel.repaint();
+
+        }
+    }
 }

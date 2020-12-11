@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CarModel {
 
@@ -32,6 +33,7 @@ public class CarModel {
 
     /**
      * Anropar BRAKE metoden för varje car i cars listan.
+     *
      * @param amount
      */
     protected void brake(int amount) {
@@ -46,7 +48,7 @@ public class CarModel {
      */
     protected void turboOn() {
         for (Vehicle car : vehicles)
-            if(car instanceof Saab95 )
+            if (car instanceof Saab95)
                 ((Saab95) car).setTurboOn();
     }
 
@@ -55,7 +57,7 @@ public class CarModel {
      */
     protected void turboOff() {
         for (Vehicle v : vehicles)
-            if(v instanceof Saab95 )
+            if (v instanceof Saab95)
                 ((Saab95) v).setTurboOff();
     }
 
@@ -64,7 +66,7 @@ public class CarModel {
      */
     protected void liftBed() {
         for (Vehicle v : vehicles)
-            if(v instanceof Scania )
+            if (v instanceof Scania)
                 ((Scania) v).liftBed(45);
     }
 
@@ -73,7 +75,28 @@ public class CarModel {
      */
     protected void lowerBed() {
         for (Vehicle v : vehicles)
-            if(v instanceof Scania )
+            if (v instanceof Scania)
                 ((Scania) v).lowerBed(45);
     }
+
+    protected void addCar() {
+        CarFactory carAdder = new CarFactory();
+        Random random = new Random();
+        int randomval = random.nextInt(2);
+
+        Vehicle toBeAdded = carAdder.createRandom(randomval);
+
+        this.vehicles.add(toBeAdded);
+
+    }
+
+    protected void removeCar() {
+        if (getVehicles().size() > 0) {
+            int randomval = new Random().nextInt(vehicles.size());
+
+            this.vehicles.remove(randomval);
+        }
+
+    }
+
 }
