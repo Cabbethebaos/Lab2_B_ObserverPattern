@@ -19,12 +19,6 @@ public class App {
      */
     private List<Observer> observers = new ArrayList<>();
 
-    public void notifyAllObservers(){
-        for (Observer observer : observers) {
-            observer.update();
-        }
-    }
-
     public static void main(String[] args) {
         App app = new App();
 
