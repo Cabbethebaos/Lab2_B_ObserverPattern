@@ -12,7 +12,6 @@ public class App {
 
     private CarModel m;
     private CarController cc;
-    private CarView frame;
 
 
     /**
@@ -25,7 +24,6 @@ public class App {
             observer.update();
         }
     }
-
 
     public static void main(String[] args) {
         App app = new App();
@@ -49,11 +47,10 @@ public class App {
         m.vehicles.add((new Saab95()));
         m.vehicles.add(new Scania(Color.red, 278, "Scania"));
 
-
         this. cc = new CarController(m);
-        this.frame = new CarView(cc);
 
         observers.add(new SpeedView(m));
+        observers.add(new CarView(cc));
 
     }
 
@@ -62,19 +59,7 @@ public class App {
      * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Vehicle v : m.vehicles) {
-                if(v.getLocation().y > 500 || v.getLocation().y < 0 || v.getLocation().x < 0 || v.getLocation().x > 700)
-                    v.turnAround();
 
-
-                v.move();
-                int x = (int) Math.round(v.getLocation().x);
-                int y = (int) Math.round(v.getLocation().y);
-                frame.drawPanel.moveit(x, y, m.vehicles.indexOf(v));
-                // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
-
-            }
             // NYTT
             for (Observer observer : observers)
                 observer.update();

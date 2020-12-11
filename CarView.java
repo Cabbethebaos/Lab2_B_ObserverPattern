@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CarView extends JFrame {
+public class CarView extends JFrame implements Observer {
     /**
      * Anger storleken på vår view
      */
@@ -217,4 +217,20 @@ public class CarView extends JFrame {
     }
 
 
+    @Override
+    public void update() {
+        for (Vehicle v : carController.m.vehicles) {
+            if(v.getLocation().y > 500 || v.getLocation().y < 0 || v.getLocation().x < 0 || v.getLocation().x > 700)
+                v.turnAround();
+
+
+            v.move();
+            int x = (int) Math.round(v.getLocation().x);
+            int y = (int) Math.round(v.getLocation().y);
+            drawPanel.moveit(x, y, carController.m.vehicles.indexOf(v));
+            // repaint() calls the paintComponent method of the panel
+            drawPanel.repaint();
+
+        }
+    }
 }
