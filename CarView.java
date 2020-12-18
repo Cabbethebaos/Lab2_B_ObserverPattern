@@ -238,18 +238,10 @@ public class CarView extends JFrame implements Observer {
 
     @Override
     public void update() {
-        for (Vehicle v : carController.m.vehicles) {
-            if(v.getLocation().y > 500 || v.getLocation().y < 0 || v.getLocation().x < 0 || v.getLocation().x > 700)
-                v.turnAround();
+        carController.move();
 
+        drawPanel.updatePoints(carController.m.vehicles);
 
-            v.move();
-            int x = (int) Math.round(v.getLocation().x);
-            int y = (int) Math.round(v.getLocation().y);
-            drawPanel.moveit(x, y, carController.m.vehicles.indexOf(v));
-            // repaint() calls the paintComponent method of the panel
-            drawPanel.repaint();
-
-        }
+        drawPanel.repaint();
     }
 }

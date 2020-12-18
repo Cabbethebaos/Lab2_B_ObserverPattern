@@ -105,4 +105,11 @@ public class CarModel {
 
     }
 
+    public void move() {
+        for (Vehicle v : vehicles) {
+            if(v.getLocation().y > 500 || v.getLocation().y < 0 || v.getLocation().x < 0 || v.getLocation().x > 700)
+                v.turnAround();
+            v.move();
+        }
+    }
 }

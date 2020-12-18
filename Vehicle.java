@@ -2,6 +2,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.List;
 
 public abstract class Vehicle implements Movable {
 
@@ -237,4 +238,5 @@ public abstract class Vehicle implements Movable {
     public void setCurrentSpeed(double speed) {
         currentSpeed = speed;
     }
+
 }

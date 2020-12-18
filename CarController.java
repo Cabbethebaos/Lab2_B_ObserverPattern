@@ -32,6 +32,8 @@ public class CarController {
     }
     protected void addCar(){m.addCar(); }
     protected void removeCar(){m.removeCar();}
+    protected void move(){m.move();}
+
 
 
 }

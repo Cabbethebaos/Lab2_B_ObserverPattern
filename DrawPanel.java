@@ -66,4 +66,10 @@ public class DrawPanel extends JPanel{
             g.drawImage(images.get(i), points.get(i).x, points.get(i).y, null); // see javadoc for more info on the parameters
 
     }
+
+    public void updatePoints(List<Vehicle> vehicles) {
+        points.clear();
+        for(Vehicle vehicle : vehicles)
+            points.add(vehicle.getLocation());
+    }
 }

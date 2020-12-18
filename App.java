@@ -26,7 +26,6 @@ public class App {
 
         // Start the timer
         app.timer.start();
-
     }
 
     /**
